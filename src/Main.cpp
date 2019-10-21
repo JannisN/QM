@@ -12,21 +12,21 @@ public:
 };
 
 template<int Width, int Height>
-constexpr Grid<Width, Height>::Grid() : quads(sf::Quads, (Width) * (Height) * 4)
+constexpr Grid<Width, Height>::Grid() : quads(sf::Quads, (Width - 1) * (Height - 1) * 4)
 {
 	for (int i = 0; i < Width - 1; i++)
 	{
 		for (int j = 0; j < Height - 1; j++)
 		{
-			quads[(i * Height + j) * 4].position = sf::Vector2f(100 * i + 0.f, 100 * j + 0.f);
-			quads[(i * Height + j) * 4 + 1].position = sf::Vector2f(100 * i + 100.f, 100 * j + 0.f);
-			quads[(i * Height + j) * 4 + 2].position = sf::Vector2f(100 * i + 100.f, 100 * j + 100.f);
-			quads[(i * Height + j) * 4 + 3].position = sf::Vector2f(100 * i + 0.f, 100 * j + 100.f);
+			quads[(i * (Height - 1) + j) * 4].position = sf::Vector2f(100 * i + 0.f, 100 * j + 0.f);
+			quads[(i * (Height - 1) + j) * 4 + 1].position = sf::Vector2f(100 * i + 100.f, 100 * j + 0.f);
+			quads[(i * (Height - 1) + j) * 4 + 2].position = sf::Vector2f(100 * i + 100.f, 100 * j + 100.f);
+			quads[(i * (Height - 1) + j) * 4 + 3].position = sf::Vector2f(100 * i + 0.f, 100 * j + 100.f);
 					   
-			quads[(i * Height + j) * 4].color = sf::Color::Red;
-			quads[(i * Height + j) * 4 + 1].color = sf::Color::Blue;
-			quads[(i * Height + j) * 4 + 2].color = sf::Color::White;;
-			quads[(i * Height + j) * 4 + 3].color = sf::Color::Yellow;
+			quads[(i * (Height - 1) + j) * 4].color = sf::Color::Red;
+			quads[(i * (Height - 1) + j) * 4 + 1].color = sf::Color::Blue;
+			quads[(i * (Height - 1) + j) * 4 + 2].color = sf::Color::White;;
+			quads[(i * (Height - 1) + j) * 4 + 3].color = sf::Color::Yellow;
 		}
 	}
 }
